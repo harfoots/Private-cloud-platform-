@@ -1,6 +1,6 @@
 /// <reference path="References.d.ts"/>
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import * as Blueprint from '@blueprintjs/core';
 import Main from './components/Main';
 import * as Alert from './Alert';
@@ -12,8 +12,9 @@ Csrf.load().then((): void => {
 	Alert.init();
 	Event.init();
 
-	ReactDOM.render(
+	const container = document.getElementById('app');
+	const root = createRoot(container);
+	root.render(
 		<div><Main/></div>,
-		document.getElementById('app'),
 	);
 });
